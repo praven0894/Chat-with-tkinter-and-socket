@@ -4,16 +4,16 @@ from threading import *
 from ScrolledText import*
 class Receive():
   def __init__(self, server, gettext):
-    self.server = server
-    self.gettext = gettext
+    #self.server = server
+    #self.gettext = gettext
     while 1:
       try:
-        text = self.server.recv(1024)
+        text = server.recv(1024)
         if not text: break
-        self.gettext.configure(state='normal')
-        self.gettext.insert(END,'Server >> %s\n'%text)
-        self.gettext.configure(state='disabled')
-        self.gettext.see(END)
+        gettext.configure(state='normal')
+        gettext.insert(END,'Server >> %s\n'%text)
+        gettext.configure(state='disabled')
+        gettext.see(END)
       except:
         break
 class App(Thread):
